@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+    <xmacro_define_value name="rplidar_a2_h" value="0.2" />
+    <xmacro_define_block name = "rplidar_a2_collision_and_visual" params="prefix">
+        <collision name="${prefix}_collision">
+            <xmacro_block name="geometry_mesh" uri="model://rplidar_a2/meshes/rplidar_a2.dae"/>
+        </collision>
+        <visual name="${prefix}_visual">
+            <xmacro_block name="geometry_mesh" uri="model://rplidar_a2/meshes/rplidar_a2.dae"/>
+        </visual>
+    </xmacro_define_block>
+    <!--rplidar a2-->
+    <model name='rplidar_a2'>
+        <link name="link">
+            <inertial>
+                <pose>0 0 0.02 0 0 0</pose>
+                <xmacro_block name="inertia_box" m="0.5" x="${rplidar_a2_h}" y="${rplidar_a2_h+0.1}" z="${2*rplidar_a2_h}"/>
+            </inertial>
+            <xmacro_block name="rplidar_a2_collision_and_visual" prefix="rplidar_a2"/>
+        </link>
+    </model>
+</sdf>

@@ -1,0 +1,1 @@
+<blog><!--blog--><title name="story1_title">abc:0.2</title><context name="story1_context">context....</context><title name="story2_title">abc:0.3</title><context name="story2_context">context....</context><other_content score="0.5"><title name="story3_title">abc:0.2+0.3</title><context name="story3_context">context....</context></other_content></blog>

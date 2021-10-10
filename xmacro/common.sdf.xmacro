@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+    <!--macro defination:inertia_cylinder-->
+    <xmacro_define_block name="inertia_cylinder" params="m r l">
+        <mass>${m}</mass>
+        <inertia>
+            <ixx>${m*(3*r*r+l*l)/12}</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>${m*(3*r*r+l*l)/12}</iyy>
+            <iyz>0</iyz>
+            <izz>${m*r*r/2}</izz>
+        </inertia>
+    </xmacro_define_block>
+    <!--macro defination:inertia_box-->
+    <xmacro_define_block name="inertia_box" params="m x y z">
+        <mass>${m}</mass>
+        <inertia>
+            <ixx>${m*(y*y+z*z)/12}</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>${m*(x*x+z*z)/12}</iyy>
+            <iyz>0</iyz>
+            <izz>${m*(x*x+y*y)/12}</izz>
+        </inertia>
+    </xmacro_define_block>
+    <!--macro defination:inertia_sphere-->
+    <xmacro_define_block name="inertia_sphere" params="m r">
+        <mass>${m}</mass>
+        <inertia>
+            <ixx>${2*m*r*r/5}</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>${2*m*r*r/5}</iyy>
+            <iyz>0</iyz>
+            <izz>${2*m*r*r/5}</izz>
+        </inertia>
+    </xmacro_define_block>
+    <!--macro defination:geometry cylinder-->
+    <xmacro_define_block name="geometry_cylinder" params="r l">
+        <geometry>
+            <cylinder>
+                <radius>${r}</radius>
+                <length>${l}</length>
+            </cylinder>
+        </geometry>
+    </xmacro_define_block>
+    <!--macro defination:geometry box-->
+    <xmacro_define_block name="geometry_box" params="x y z">
+        <geometry>
+            <box>
+                <size>${x} ${y} ${z}</size>
+            </box>
+        </geometry>
+    </xmacro_define_block>
+    <!--macro defination:geometry sphere-->
+    <xmacro_define_block name="geometry_sphere" params="r">
+        <geometry>
+            <sphere>
+                <radius>${r}</radius>
+            </sphere>
+        </geometry>
+    </xmacro_define_block>
+    <!--macro defination:geometry mesh-->
+    <xmacro_define_block name="geometry_mesh" params="uri">
+        <geometry>
+            <mesh>
+                <uri>${uri}</uri>
+            </mesh>
+        </geometry>
+    </xmacro_define_block>
+    <!--macro defination:visual_collision_with_mesh-->
+    <xmacro_define_block name="visual_collision_with_mesh" params="prefix uri">
+        <visual name="${prefix}_visual">
+            <geometry>
+                <mesh>
+                    <uri>${uri}</uri>
+                </mesh>
+            </geometry>
+        </visual>
+        <collision name="${prefix}_collision">
+            <geometry>
+                <mesh>
+                    <uri>${uri}</uri>
+                </mesh>
+            </geometry>
+        </collision>
+    </xmacro_define_block>
+</sdf>

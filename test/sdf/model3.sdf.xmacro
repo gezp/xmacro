@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+    <xmacro_include uri="file://model2.sdf.xmacro" />
+    <!--rplidar a2-->
+    <model name='rplidar_a2'>
+        <link name="link">
+            <inertial>
+                <pose>0 0 0.03 0 0 0</pose>
+                <xmacro_block name="inertia_box" m="0.5" x="${rplidar_a2_h}" y="${rplidar_a2_h+0.1}" z="${2*rplidar_a2_h}"/>
+            </inertial>
+            <xmacro_block name="rplidar_a2_collision_and_visual" prefix="rplidar_a3"/>
+        </link>
+    </model>
+</sdf>
