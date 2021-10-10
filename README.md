@@ -1,7 +1,5 @@
 # xmacro
 
-**This package is refactor version of `xacro4sdf`. (WIP)**
-
 `xmacro` is a simple tool to define and parse XML macro. it's inspired by [ros/xacro](https://github.com/ros/xacro) which is an XML macro language desiged for `urdf`, `xmacro` looks like simplified version of [ros/xacro](https://github.com/ros/xacro) , but it's more simple, and also more easy to use.
 
 * `xmacro`  is independent of ROS, you could install it by `pip` .
@@ -9,12 +7,13 @@
 * it provides python api so that we could parse xml file in ROS2 launch file.
 * it provides `xmacro4sdf` : general `xmacro` with some specific function for `sdf`.
 
-
 ## Usage
 
 Installation
 
 ```bash
+# install by pip
+pip install xmacro
 # install from source code
 git clone https://github.com/gezp/xmacro.git
 cd xmacro && sudo python3 setup.py install
@@ -159,7 +158,7 @@ xmacro.to_file(outputfile)
 
 ## XMLMacro4sdf Features
 
-### pre-defined common.sdf.xmacro
+pre-defined common.sdf.xmacro
 
 ```xml
 <!--macro defination:inertia-->
@@ -175,7 +174,12 @@ xmacro.to_file(outputfile)
 <xmacro_define_block name="visual_collision_with_mesh" params="prefix uri">
 ```
 
-(TODO)
+examples
+
+```bash
+# some examples in folder test/sdf
+xmacro4sdf model.sdf.xmacro > model.sdf
+```
 
 ## Maintainer and License 
 
