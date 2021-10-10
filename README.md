@@ -5,7 +5,7 @@
 `xmacro` is a simple tool to define and parse XML macro. it's inspired by [ros/xacro](https://github.com/ros/xacro) which is an XML macro language desiged for `urdf`, `xmacro` looks like simplified version of [ros/xacro](https://github.com/ros/xacro) , but it's more simple, and also more easy to use.
 
 * `xmacro`  is independent of ROS, you could install it by `pip` .
-* XML namespaces isn't used in `xmacro` , so there are some reserved words for  `xmacro` : `xmacro_include`, `xmacro_define_value`, `xmacro_define_block`, `xmacro_block`.
+* XML namespaces isn't used in `xmacro` , and there are some reserved words for  `xmacro` : `xmacro_include`, `xmacro_define_value`, `xmacro_define_block`, `xmacro_block`.
 * it provides python api so that we could parse xml file in ROS2 launch file.
 * it provides `xmacro4sdf` : general `xmacro` with some specific function for `sdf`.
 
@@ -18,6 +18,12 @@ Installation
 # install from source code
 git clone https://github.com/gezp/xmacro.git
 cd xmacro && sudo python3 setup.py install
+```
+examples
+
+```bash
+# some examples in folder test/
+xmacro test_xmacro.xml.xmacro > test_xmacro.xml
 ```
 
 ##  XMLMacro Features
