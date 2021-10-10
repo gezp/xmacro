@@ -20,7 +20,7 @@ def parse_model_uri(uri):
         return result
     # get absolute path according to uri
     if splited_str[0]  == "model":
-        for tmp_path in self.xmacro_paths:
+        for tmp_path in xmacro_paths:
             tmp_path = os.path.join(tmp_path,splited_str[1])
             if(os.path.isfile(tmp_path)):
                 result = tmp_path
@@ -71,7 +71,7 @@ def xmacro4sdf_main():
     xmacro.set_xml_file(inputfile)
     try:
         xmacro.generate()
-        xmacro.to_file(outputfile)
+        print(xmacro.to_string())
     except Exception as e:
         print("Error:",e)
     return 0
