@@ -62,51 +62,64 @@ xmacro definition
 
 ```xml
 <!--definition of macro-->
-	<xmacro_define_value name="mass" value="0.2" />
-	<xmacro_define_block macro_name="box_inertia" params="m x y z">
-        <mass>${m}</mass>
-        <inertia>
-            <ixx>${m*(y*y+z*z)/12}</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>${m*(x*x+z*z)/12}</iyy>
-            <iyz>0</iyz>
-            <izz>${m*(x*x+z*z)/12}</izz>
-        </inertia>
-    </xmacro_define_block>
+<xmacro_define_value name="mass" value="0.2" />
+<xmacro_define_block name="box_inertia" params="m x y z">
+    <mass>${m}</mass>
+    <inertia>
+         <ixx>${m*(y*y+z*z)/12}</ixx>
+         <ixy>0</ixy>
+         <ixz>0</ixz>
+         <iyy>${m*(x*x+z*z)/12}</iyy>
+         <iyz>0</iyz>
+        <izz>${m*(x*x+z*z)/12}</izz>
+    </inertia>
+</xmacro_define_block>
 <!--use of macro-->
-    <inertial>
-         <pose>0 0 0.02 0 0 0</pose>
-         <xmacro_block name="box_inertia" m="${mass}" x="0.3" y="0.1" z="0.2"/>
-    </inertial>
+<inertial>
+     <pose>0 0 0.02 0 0 0</pose>
+     <xmacro_block name="box_inertia" m="${mass}" x="0.3" y="0.1" z="0.2"/>
+</inertial>
 ```
 
 generated xml
 
 ```xml
-			<inertial>
-				<pose>0 0 0.02 0 0 0</pose>
-				<mass>0.2</mass>
-				<inertia>
-					<ixx>0.0008333333333333335</ixx>
-					<ixy>0</ixy>
-					<ixz>0</ixz>
-					<iyy>0.002166666666666667</iyy>
-					<iyz>0</iyz>
-					<izz>0.002166666666666667</izz>
-				</inertia>
-			</inertial>
+<inertial>
+    <pose>0 0 0.02 0 0 0</pose>
+    <mass>0.2</mass>
+    <inertia>
+        <ixx>0.0008333333333333335</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0.002166666666666667</iyy>
+        <iyz>0</iyz>
+        <izz>0.002166666666666667</izz>
+    </inertia>
+</inertial>
 ```
 
 * only support simple parameters (string and number), and block parameters isn't supported.
-* it's supported to use other  `xmacro_block`  in `xmacro_define_block` which is recursive definition.
+* it's supported to use other  `xmacro_block`  in `xmacro_define_block` which is recursive definition (the max nesting level is 5).
 
-> it's not recommended to define macro recursively (only support <=5).
+condition block
+
+a example here (you could find more examples in `test/test_xmacro_condition.xml.xmacro`)
+```xml
+<!--use of macro-->
+<inertial>
+    <pose>0 0 0.02 0 0 0</pose>
+    <xmacro_block name="box_inertia" m="${mass}" x="0.3" y="0.1" z="0.2" condition="${mass==0.2}"/>
+</inertial>
+```
+* the `condition` can be `True`, `False`, `1`, `0`, we can also use math expression to define condition, but operator `<` and `>` isn't supported in math expression.
+* if `condition` is `False` or `0`, the `xmacro_block` wou't be loaded.
+* `condition` is reserved attribute of `<xmacro_block>`, so `condition` can't be used as `params` of `<xmacro_define_block>`.
+
 
 ### Math expressions
 
 * within dollared-braces `${xxxx}`, you can also write simple math expressions.
-* refer to examples of  **Value macro ** and **Block macro ** 
+* refer to examples of  **Value macro** and **Block macro** 
 * it's implemented by calling `eval()` in python, so it's unsafe for some cases.
 
 ### Including other xmacro files
