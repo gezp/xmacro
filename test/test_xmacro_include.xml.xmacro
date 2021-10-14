@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<blog>
+    <xmacro_include uri="file://test_xmacro_block.xml.xmacro" />
+    <xmacro_define_value name="v1" value="0.2" />
+    <xmacro_define_value name="v2" value="0.8" />
+    <!--blog-->
+    <xmacro_block name="story" suffix="_1" data='${v1}'/>
+    <xmacro_block name="story" suffix="_2" data="${v2}"/>
+    <xmacro_block name="story" suffix="_3" data="${v1}+${v2}=${v1+v2}"/>
+</blog>

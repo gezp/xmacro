@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<blog>
+    <xmacro_define_value name="v1" value="0.2" />
+    <xmacro_define_value name="v2" value="0.3" />
+    <xmacro_define_value name="story_name" value="abc" />
+    <!--blog-->
+    <story name="${story_name}_1">
+        <context>${v1}</context>
+    </story>
+    <story name="${story_name}_2">
+        <context>${v1}+${v2}=${v1+v2}</context>
+    </story>
+</blog>

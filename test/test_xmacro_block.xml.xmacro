@@ -1,17 +1,20 @@
 <?xml version="1.0"?>
 <blog>
-    <xmacro_define_value name="v1" value="0.2" />
-    <xmacro_define_value name="v2" value="0.3" />
-    <xmacro_define_block name = "story" params="prefix data">
-        <title name="${prefix}_title">abc:${data}</title>
-        <context name="${prefix}_context">context....</context>
+    <xmacro_define_block name = "story_without_params" >
+        <title name="title_a">abc</title>
+        <context name="context_a">context....</context>
     </xmacro_define_block>
-    <xmacro_define_block name = "floder" params="prefix">
-        <xmacro_block name="story" prefix="${prefix}_story1" data='1.0'/>
-        <xmacro_block name="story" prefix="${prefix}_story2" data='2.0'/>
+    <xmacro_define_block name = "story" params="suffix data">
+        <title name="title${suffix}">abc</title>
+        <context>${data}</context>
+    </xmacro_define_block>
+    <xmacro_define_block name = "two_story" params="suffix">
+        <xmacro_block name="story" suffix="${suffix}_1" data='1.0'/>
+        <xmacro_block name="story" suffix="${suffix}_2" data='2.0'/>
     </xmacro_define_block>
     <!--blog-->
-    <xmacro_block name="floder" prefix="floder1"/>
-    <xmacro_block name="floder" prefix="floder2" data='2.0'/>
-    <xmacro_block name="story" prefix="story3" data="${v2}"/>
+    <xmacro_block name="story_without_params"/>
+    <xmacro_block name="story" suffix="_1" data='1.0'/>
+    <xmacro_block name="story" suffix="_2" data='2.0'/>
+    <xmacro_block name="two_story" suffix="_3"/>
 </blog>
