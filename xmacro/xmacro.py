@@ -57,7 +57,10 @@ class XMLMacro:
                     self.xmacro_values[name] = try2number(node.getAttribute("value"))
                 elif node.tagName == 'xmacro_define_block':
                     name = node.getAttribute("name")
-                    self.xmacro_block_params[name] = node.getAttribute("params").split(' ')
+                    if node.hasAttribute("params"):
+                        self.xmacro_block_params[name] = node.getAttribute("params").split(' ')
+                    else:
+                        self.xmacro_block_params[name] = []
                     self.xmacro_block_texts[name] = node.toxml()
 
     def __include_xmacro_defination_recursively(self,doc,dirname):

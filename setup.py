@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='xmacro',  
-    version='1.1.0',  
+    version='1.1.1',  
     author='Zhenpeng Ge',  
     author_email='zhenpeng.ge@qq.com', 
     url='https://github.com/gezp/xmacro', 
