@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<blog>
+    <xmacro_define_value name="is_load" value="True"/>
+    <xmacro_define_value name="state" value="ok"/>
+    <xmacro_define_value name="a" value="2"/>
+    <xmacro_define_block name = "story" params="prefix data">
+        <title name="${prefix}_title">abc:${data}</title>
+        <context name="${prefix}_context">context....</context>
+    </xmacro_define_block>
+    <!--blog-->
+    <xmacro_block name="story" prefix="story1" data="1" condition="True"/>
+    <xmacro_block name="story" prefix="story2" data="1" condition="1"/>
+    <xmacro_block name="story" prefix="story3" data="1" condition="${1==1}"/>
+    <xmacro_block name="story" prefix="story4" data="1" condition="${a/2==1}"/>
+    <xmacro_block name="story" prefix="story5" data="1" condition="${is_load}"/>
+    <xmacro_block name="story" prefix="story6" data="1" condition="${state=='ok'}"/>
+    <xmacro_block name="story" prefix="story7" data="2" condition="False"/>
+    <xmacro_block name="story" prefix="story8" data="2" condition="0"/>
+    <xmacro_block name="story" prefix="story9" data="2" condition="${a != 2}"/>
+    <xmacro_block name="story" prefix="story10" data="2" condition="${not is_load}"/>
+    <xmacro_block name="story" prefix="story11" data="2" condition="${state=='idle'}"/>
+</blog>

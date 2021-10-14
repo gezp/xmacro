@@ -103,6 +103,14 @@ class XMLMacro:
         # check name
         if name not in self.xmacro_block_texts.keys():
             raise Exception("[line %d]"%(sys._getframe().f_lineno)+"xmacro_block<%s> is not defined"%name)
+        # check condition
+        condition = True
+        if node.hasAttribute("condition"):
+            condition = node.getAttribute("condition")
+        if condition == 'False' or condition == '0':
+            # remove xmacro node
+            parent.removeChild(node)
+            return
         # get block info: xml string and params
         xml_str = self.xmacro_block_texts[name]
         params = {}
