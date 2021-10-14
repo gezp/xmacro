@@ -88,30 +88,33 @@ class XMLMacro:
     def __replace_value(self,xml_str,value_dict):
         pattern = re.compile(r'[$][{](.*?)[}]', re.S)
         def eval_fn(obj):
-            result = eval(obj.group(1), value_dict)
+            try:
+                result = eval(obj.group(1), value_dict)
+            except Exception as e:
+                 raise Exception("failed to eval <%s>"%(obj.group(1))+","+str(e))
             return str(result)
         return re.sub(pattern, eval_fn, xml_str)
             
     def __replace_macro_block(self,node):
         parent = node.parentNode
         if not node.hasAttribute("name"):
-            raise Exception("[xmacro_block] attribute 'name' is not defined")
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"xmacro_block attribute 'name' is not defined")
         name = node.getAttribute("name")
         # check name
         if name not in self.xmacro_block_texts.keys():
-            raise Exception("[xmacro_block] xmacro_block<%s> is not defined"%name)
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"xmacro_block<%s> is not defined"%name)
         # get block info: xml string and params
         xml_str = self.xmacro_block_texts[name]
         params = {}
         for k in self.xmacro_block_params[name]:
             if not node.hasAttribute(k):
-                raise Exception("[xmacro_block<%s>] attribute '%s' is not defined"%(name,k))
+                raise Exception("[line %d]"%(sys._getframe().f_lineno)+"<%s> attribute '%s' is not defined"%(name,k))
             params[k] = try2number(node.getAttribute(k))
         # replace params value
         try:
             xml_str = self.__replace_value(xml_str,params)
         except Exception as e:
-            raise Exception("[xmacro_define_block<%s>] "%name+str(e))
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"<%s>"%name+str(e))
         # transform to doc and insert to parent doc
         new_node = xml.dom.minidom.parseString(xml_str).documentElement
         for cc in list(new_node.childNodes):
@@ -147,7 +150,7 @@ class XMLMacro:
 
     def generate(self,custom_values:dict={}):
         if self.in_doc is None:
-            raise Exception("input doc is None")
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"input doc is None")
         # parse xmacro defination (value and block)
         if not self.parse_flag:
             self.__parse()
@@ -160,7 +163,7 @@ class XMLMacro:
         try:
             xml_str = self.__replace_value(xml_str,xmacro_values)
         except Exception as e:
-            raise Exception("[xmacro_define_value]"+str(e))
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"process xmacro_value,"+str(e))
         self.out_doc = xml.dom.minidom.parseString(xml_str)
         # replace xmacro block (breadth-first)
         for _ in range(5):
@@ -172,7 +175,7 @@ class XMLMacro:
                 break
         # check
         if self.out_doc.getElementsByTagName("xmacro_block").length != 0:
-            raise Exception("[xmacro_block]recursion level too deep (must<=5).")
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"recursion level too deep (must<=5).")
 
     def to_string(self):
         # auto-generated banner
