@@ -21,8 +21,8 @@ cd xmacro && sudo python3 setup.py install
 examples
 
 ```bash
-# some examples in folder test/
-xmacro test_xmacro.xml.xmacro > test_xmacro.xml
+# some examples in folder test/xmacro
+xmacro test_xmacro_block.xml.xmacro > test_xmacro_block.xml
 ```
 
 ##  XMLMacro Features
@@ -103,7 +103,7 @@ generated xml
 
 condition block
 
-a example here (you could find more examples in `test/test_xmacro_condition.xml.xmacro`)
+a example here (you could find more examples in `test/xmacro/test_xmacro_condition.xml.xmacro`)
 ```xml
 <!--use of macro-->
 <inertial>
