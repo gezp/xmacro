@@ -5,6 +5,7 @@ import sys
 import re
 import xml.dom.minidom
 import xmacro.xml_format
+from math import *
 
 def try2number(str):
     try:
@@ -92,7 +93,7 @@ class XMLMacro:
         pattern = re.compile(r'[$][{](.*?)[}]', re.S)
         def eval_fn(obj):
             try:
-                result = eval(obj.group(1), value_dict)
+                result = eval(obj.group(1), None, value_dict)
             except Exception as e:
                  raise Exception("failed to eval <%s>"%(obj.group(1))+","+str(e))
             return str(result)
