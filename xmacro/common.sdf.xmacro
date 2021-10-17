@@ -71,14 +71,14 @@
     </xmacro_define_block>
     <!--macro defination:visual_collision_with_mesh-->
     <xmacro_define_block name="visual_collision_with_mesh" params="prefix uri">
-        <visual name="${prefix}_visual">
+        <visual name="${prefix}visual">
             <geometry>
                 <mesh>
                     <uri>${uri}</uri>
                 </mesh>
             </geometry>
         </visual>
-        <collision name="${prefix}_collision">
+        <collision name="${prefix}collision">
             <geometry>
                 <mesh>
                     <uri>${uri}</uri>
