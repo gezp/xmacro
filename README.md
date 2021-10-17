@@ -1,11 +1,11 @@
 # xmacro
 
-`xmacro` is a simple tool to define and parse XML macro. it's inspired by [ros/xacro](https://github.com/ros/xacro) which is an XML macro language desiged for `urdf`, `xmacro` looks like simplified version of [ros/xacro](https://github.com/ros/xacro) , but it's more simple, and also more easy to use.
+`xmacro` is a simple tool to define and parse XML macro. it's inspired by [ros/xacro](https://github.com/ros/xacro) which is an XML macro language desiged for `urdf`. `xmacro` looks like a simplified version of [ros/xacro](https://github.com/ros/xacro), it's simpler, more flexible, and also easier to use.
 
-* `xmacro`  is independent of ROS, you could install it by `pip` .
-* XML namespaces isn't used in `xmacro` , and there are some reserved words for  `xmacro` : `xmacro_include`, `xmacro_define_value`, `xmacro_define_block`, `xmacro_block`.
+* `xmacro` is independent of ROS, you could install it by `pip` .
+* XML namespace isn't used in `xmacro`,there are some reserved tags: `xmacro_include`, `xmacro_define_value`, `xmacro_define_block`, `xmacro_block`.
 * it provides python api so that we could parse xml file in ROS2 launch file.
-* it provides `xmacro4sdf` : general `xmacro` with some specific function for `sdf`.
+* it provides `xmacro4sdf` : `xmacro` with some specific functions for `sdf`(pre-defined common macro, `xmacro_include` path parser for `model://`).
 
 ## Usage
 
@@ -160,10 +160,9 @@ xmacro.set_xml_file(inputfile)
 xmacro.generate()
 xmacro.to_string()
 
-#case4 custom property
+#case4 custom macro value
 xmacro.set_xml_file(inputfile)
-# use custom property dictionary to overwrite global property  
-# defined by <xacro_define_property> (only in 'inputfile')
+# use custom dictionary to overwrite global macro value defined by <xmacro_define_value>
 kv={"rplidar_a2_h":0.8}
 xmacro.generate(kv)
 xmacro.to_file(outputfile)
