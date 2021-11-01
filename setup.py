@@ -14,17 +14,18 @@ setup(
     author='Zhenpeng Ge',
     author_email='zhenpeng.ge@qq.com',
     url='https://github.com/gezp/xmacro',
-    description='a simple XML macro script',
+    description='a simple XML macro tool',
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MIT',
-    keywords=['xml', 'macro', 'xmacro', 'sdformat', 'urdf'],
+    keywords=['xml', 'macro', 'xacro', 'xmacro', 'sdformat', 'sdf', 'urdf'],
     include_package_data=True,
     packages=find_packages(),
     entry_points={
         'console_scripts': [
             'xmacro = xmacro:xmacro_main',
             'xmacro4sdf = xmacro:xmacro4sdf_main',
+            'xmacro4urdf = xmacro:xmacro4urdf_main',
         ]
     }
 )

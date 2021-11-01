@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="common">
+    <!--inertia_cylinder-->
+    <xmacro_define_block name="inertia_cylinder" params="m r l">
+        <mass value="${m}"/>
+        <inertia ixx="${m*(3*r*r+l*l)/12}" ixy="0.0" ixz="0.0" iyy="${m*(3*r*r+l*l)/12}" iyz="0.0" izz="${m*r*r/2}"/>
+    </xmacro_define_block>
+    <!--inertia_box-->
+    <xmacro_define_block name="inertia_box" params="m x y z">
+        <mass value="${m}"/>
+        <inertia ixx="${m*(y*y+z*z)/12}" ixy="0.0" ixz="0.0" iyy="${m*(x*x+z*z)/12}" iyz="0.0" izz="${m*(x*x+y*y)/12}"/>
+    </xmacro_define_block>
+    <!--inertia_sphere-->
+    <xmacro_define_block name="inertia_sphere" params="m r">
+        <mass value="${m}"/>
+        <inertia ixx="${2*m*r*r/5}" ixy="0.0" ixz="0.0" iyy="${2*m*r*r/5}" iyz="0.0" izz="${2*m*r*r/5}"/>
+    </xmacro_define_block>
+    <!--geometry cylinder-->
+    <xmacro_define_block name="geometry_cylinder" params="r l">
+        <geometry>
+             <cylinder length="${l}" radius="${r}"/>
+        </geometry>
+    </xmacro_define_block>
+    <!--geometry box-->
+    <xmacro_define_block name="geometry_box" params="x y z">
+        <geometry>
+            <box size="${x} ${y} ${z}"/>
+        </geometry>
+    </xmacro_define_block>
+    <!--macro defination:geometry sphere-->
+    <xmacro_define_block name="geometry_sphere" params="r">
+        <geometry>
+            <sphere radius="${r}"/>
+        </geometry>
+    </xmacro_define_block>
+    <!--macro defination:geometry mesh-->
+    <xmacro_define_block name="geometry_mesh" params="uri">
+        <geometry>
+            <mesh filename="${uri}"/>
+        </geometry>
+    </xmacro_define_block>
+</robot>

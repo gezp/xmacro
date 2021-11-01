@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot name="my_robot">
+    <xmacro_define_value name="leglen" value="0.6" />
+    <xmacro_define_value name="width" value="0.2" />
+    <xmacro_define_value name="bodylen" value="0.6" />
+    <material name="blue">
+         <color rgba="0 0 0.8 1"/>
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+    <link name="base_link">
+        <visual>
+            <xmacro_block name="geometry_cylinder" r="${bodylen}" l="${width}"/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <xmacro_block name="geometry_cylinder" r="${bodylen}" l="${width}"/>
+        </collision>
+        <inertial>
+            <xmacro_block name="inertia_cylinder" m="10" r="${bodylen}" l="${width}"/>
+        </inertial>
+    </link>
+</robot>
