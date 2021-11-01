@@ -20,6 +20,7 @@ def parse_package_uri(uri):
 class XMLMacro4urdf(XMLMacro):
     def __init__(self):
         super().__init__()
+        self.tool_name = "xmacro4urdf"
         self.parse_uri_fn = parse_package_uri
         filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'common.urdf.xmacro')
         self.common_xmacro_paths.append(filepath)

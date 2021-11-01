@@ -30,6 +30,7 @@ def parse_model_uri(uri):
 class XMLMacro4sdf(XMLMacro):
     def __init__(self):
         super().__init__()
+        self.tool_name = "xmacro4sdf"
         self.parse_uri_fn = parse_model_uri
         filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'common.sdf.xmacro')
         self.common_xmacro_paths.append(filepath)
