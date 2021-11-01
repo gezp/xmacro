@@ -179,7 +179,7 @@ class XMLMacro:
             raise Exception("[line %d]"%(sys._getframe().f_lineno)+"process xmacro_value,"+str(e))
         self.out_doc = xml.dom.minidom.parseString(xml_str)
         # replace xmacro block (breadth-first)
-        for _ in range(5):
+        for _ in range(100):
             nodes = self.out_doc.getElementsByTagName("xmacro_block")
             if nodes.length != 0:
                 for node in list(nodes):
@@ -188,7 +188,7 @@ class XMLMacro:
                 break
         # check
         if self.out_doc.getElementsByTagName("xmacro_block").length != 0:
-            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"recursion level too deep (must<=5).")
+            raise Exception("[line %d]"%(sys._getframe().f_lineno)+"recursion level too deep (must<=100).")
 
     def to_string(self):
         # auto-generated banner
