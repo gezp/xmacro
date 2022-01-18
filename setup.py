@@ -10,7 +10,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='xmacro',
-    version='1.2.0',
+    version='1.2.1',
     author='Zhenpeng Ge',
     author_email='zhenpeng.ge@qq.com',
     url='https://github.com/gezp/xmacro',
@@ -23,9 +23,9 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'xmacro = xmacro:xmacro_main',
-            'xmacro4sdf = xmacro:xmacro4sdf_main',
-            'xmacro4urdf = xmacro:xmacro4urdf_main',
+            'xmacro = xmacro.xmacro:xmacro_main',
+            'xmacro4sdf = xmacro.xmacro4sdf:xmacro4sdf_main',
+            'xmacro4urdf = xmacro.xmacro4urdf:xmacro4urdf_main',
         ]
     }
 )
