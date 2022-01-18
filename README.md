@@ -1,4 +1,5 @@
 # xmacro
+![PyPI](https://img.shields.io/pypi/v/xmacro)  ![](https://img.shields.io/pypi/l/xmacro) ![](https://img.shields.io/pypi/dm/xmacro)
 
 `xmacro` is a simple tool to define and parse XML macro. it's inspired by [ros/xacro](https://github.com/ros/xacro) which is an XML macro language desiged for `urdf`. `xmacro` looks like a simplified version of `ros/xacro`, it's simpler, but it works well both for `urdf` and `sdf`. in addition it's flexible, and also easy to use.
 
@@ -6,7 +7,7 @@
 * XML namespace isn't used in `xmacro`, there are some reserved tags: `xmacro_include`, `xmacro_define_value`, `xmacro_define_block`, `xmacro_block`.
 * it provides python api so that we could parse xml file in ROS2 launch file.
 * `xmacro4sdf` : `xmacro` with some specific functions for `sdf`(pre-defined common macro, `xmacro_include` path parser for `model://`).
-* `xmacro4urdf` : `xmacro` with some specific functions for `urdf`(pre-defined common macro, `xmacro_include` path parser for `package://`).
+* `xmacro4urdf` : `xmacro` with some specific functions for `urdf`(pre-defined common macro, `xmacro_include` path parser for `package://`). It only supports ROS2.
 
 ## Usage
 
