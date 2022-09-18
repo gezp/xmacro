@@ -1,4 +1,4 @@
-# xmacro4sdf
+# xmacro
 ![PyPI](https://img.shields.io/pypi/v/xmacro)  ![](https://img.shields.io/pypi/l/xmacro) ![](https://img.shields.io/pypi/dm/xmacro)
 
 `xmacro` is a simple tool to define and parse XML macro. it's inspired by [ros/xacro](https://github.com/ros/xacro) which is an XML macro language desiged for `urdf`. `xmacro` looks like a simplified version of `ros/xacro`, it's simpler, but it works well for xml files like `urdf` and `sdf`). in addition it's flexible, and also easy to use.
